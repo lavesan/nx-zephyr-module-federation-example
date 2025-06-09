@@ -2,21 +2,22 @@ import { dependencies } from "./package.json";
 import type { ModuleFederationConfig } from "@rsbuild/core";
 
 const isDev = process.env.NODE_ENV === "development";
+const VERCEL_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
 
-const SETTINGS_URL = isDev
-  ? "http://localhost:3001"
-  : "https://seu-app-settings.vercel.app"; // Substitua pelo seu domínio real da Vercel
-
-const PROFILE_URL = isDev
-  ? "http://localhost:3002"
-  : "https://seu-app-profile.vercel.app"; // Substitua pelo seu domínio real da Vercel
+const baseUrl = isDev ? "" : VERCEL_URL;
 
 export const mfConfig: ModuleFederationConfig["options"] = {
   name: "shell",
   filename: "remoteEntry.js",
   remotes: {
-    settings: `settings@${SETTINGS_URL}/remoteEntry.js`,
-    profile: `profile@${PROFILE_URL}/remoteEntry.js`,
+    settings: `settings@${
+      isDev ? "http://localhost:3001" : `${baseUrl}/settings`
+    }/remoteEntry.js`,
+    profile: `profile@${
+      isDev ? "http://localhost:3002" : `${baseUrl}/profile`
+    }/remoteEntry.js`,
   },
   exposes: {},
   shared: {
