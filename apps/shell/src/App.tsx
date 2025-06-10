@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 const Settings = lazy(() => import("settings/App"));
-// const Profile = lazy(() => import("profile/App"));
+const Profile = lazy(() => import("profile/App"));
 
 import "./App.css";
 
@@ -17,13 +17,13 @@ const App = () => {
             <Settings />
           </Suspense>
         </div>
-        {/* <div
+        <div
           style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}
         >
           <Suspense fallback={<div>Loading...</div>}>
             <Profile />
           </Suspense>
-        </div> */}
+        </div>
       </div>
     </div>
   );
