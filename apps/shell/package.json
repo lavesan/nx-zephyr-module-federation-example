@@ -11,10 +11,12 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "zephyr-rspack-plugin": "^0.0.38",
-    "zephyr-rsbuild-plugin": "workspace:*"
+    "react-router-dom": "^7.6.2",
+    "zephyr-rsbuild-plugin": "workspace:*",
+    "zephyr-rspack-plugin": "^0.0.38"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

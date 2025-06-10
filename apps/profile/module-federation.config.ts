@@ -1,21 +1,21 @@
 import { dependencies } from "./package.json";
-export const mfConfig = {
+import type { ModuleFederationConfig } from "@rsbuild/core";
+
+export const mfConfig: ModuleFederationConfig["options"] = {
   name: "profile",
   filename: "remoteEntry.js",
   exposes: {
-    "./App": "./src/App"
+    "./App": "./src/App",
   },
   shared: {
     ...dependencies,
     react: {
       singleton: true,
-      eager: true,
-      requiredVersion: dependencies.react
+      requiredVersion: dependencies.react,
     },
     "react-dom": {
       singleton: true,
-      eager: true,
-      requiredVersion: dependencies["react-dom"]
-    }
-  }
+      requiredVersion: dependencies["react-dom"],
+    },
+  },
 };

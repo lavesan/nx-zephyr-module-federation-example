@@ -1,32 +1,30 @@
-import { lazy, Suspense } from "react";
-const Settings = lazy(() => import("settings/App"));
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Header from "./components/Header";
+
+// Lazy load the remote modules
+const Courses = lazy(() => import("courses/App"));
 const Profile = lazy(() => import("profile/App"));
 
 import "./App.css";
 
-const App = () => {
+function App() {
   return (
-    <div className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-      <div style={{ display: "flex", gap: 2 }}>
-        <div
-          style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}
-        >
+    <BrowserRouter>
+      <div style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}>
+        <Header />
+        <main style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <Suspense fallback={<div>Loading...</div>}>
-            <Settings />
+            <Routes>
+              <Route path="/" element={<Navigate to="/courses" replace />} />
+              <Route path="/courses*" element={<Courses />} />
+              <Route path="/profile*" element={<Profile />} />
+            </Routes>
           </Suspense>
-        </div>
-        <div
-          style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}
-        >
-          <Suspense fallback={<div>Loading...</div>}>
-            <Profile />
-          </Suspense>
-        </div>
+        </main>
       </div>
-    </div>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;

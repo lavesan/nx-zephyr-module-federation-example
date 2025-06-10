@@ -21,9 +21,9 @@
     "noUnusedParameters": true,
     /* paths */
     "paths": {
-      "settings/App": ["../settings/src/App.tsx"],
+      "courses/App": ["../courses/src/App.tsx"],
       "profile/App": ["../profile/src/App.tsx"]
     }
   },
-  "include": ["src", "../settings/src/App.tsx"]
+  "include": ["src", "../courses/src/App.tsx"]
 }

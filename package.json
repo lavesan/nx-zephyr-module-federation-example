@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx run-many --target=build --projects=shell,settings,profile",
-    "dev": "nx run-many --target=dev --projects=shell,settings,profile",
-    "check": "nx run-many --target=check --projects=shell,settings,profile"
+    "build": "nx run-many --target=build --projects=shell,courses,profile",
+    "dev": "nx run-many --target=dev --projects=shell,courses,profile",
+    "check": "nx run-many --target=check --projects=shell,courses,profile"
   },
   "private": true,
   "dependencies": {},
