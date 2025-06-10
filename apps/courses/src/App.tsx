@@ -1,8 +1,7 @@
-import { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [courses] = useState([
+  const courses = [
     {
       id: 1,
       title: "Advanced React Patterns and Performance",
@@ -75,7 +74,7 @@ const App = () => {
         role: "Frontend Specialist",
       },
     },
-  ]);
+  ];
 
   return (
     <div className="courses-container">

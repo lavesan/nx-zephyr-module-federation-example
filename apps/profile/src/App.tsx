@@ -1,8 +1,7 @@
-import { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [studentData] = useState({
+  const studentData = {
     name: "John Smith",
     role: "Student",
     joinDate: "Member since January 2024",
@@ -20,7 +19,7 @@ const App = () => {
       coursesCompleted: 5,
       hoursStudied: 25,
     },
-  });
+  };
 
   return (
     <div className="profile-container">
