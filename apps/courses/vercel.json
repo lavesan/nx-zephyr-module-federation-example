@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd ../.. && pnpm install && npx nx build courses",
+  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && npx nx build courses",
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [

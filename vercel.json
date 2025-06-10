@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm install && npx nx build shell",
+  "buildCommand": "pnpm install --no-frozen-lockfile && npx nx build shell",
   "outputDirectory": "apps/shell/dist",
   "framework": "vite",
   "rewrites": [
