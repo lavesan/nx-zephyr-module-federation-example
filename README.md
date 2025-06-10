@@ -1,109 +1,157 @@
-# NxModuleFederationTesting
+# Nx Module Federation with Zephyr
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A modern micro-frontend architecture demonstration using Module Federation, built with Nx monorepo and Zephyr. This project showcases how to build scalable, modular web applications using cutting-edge technologies.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+🔗 [Live Demo](https://nx-zephyr-module-federation-shell.vercel.app/)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Project Overview
 
-## Generate a library
+This monorepo contains three main applications that work together using Module Federation:
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+- **Shell** (Host Application)
+
+  - Main container application
+  - Handles routing and navigation
+  - Integrates remote modules seamlessly
+  - Modern header with responsive design
+
+- **Courses** (Remote Module)
+
+  - Course listing interface
+  - Beautiful card-based layout
+  - Tech-focused course content
+  - Responsive grid design
+
+- **Profile** (Remote Module)
+  - Student profile dashboard
+  - Learning statistics
+  - Progress tracking
+  - Interactive UI elements
+
+## Technology Stack
+
+### Core Technologies
+
+- **Nx** (v20.7.2)
+
+  - Monorepo management
+  - Efficient build system
+  - Smart caching
+  - Project dependency graph
+
+- **Module Federation**
+
+  - Runtime dependency sharing
+  - Dynamic remote loading
+  - Shared component library
+  - Micro-frontend architecture
+
+- **Zephyr**
+  - Custom RSBuild plugin
+  - Enhanced build configuration
+  - Optimized module federation setup
+
+### Build Tools
+
+- **RSBuild/RSPack**
+
+  - Next-generation build tool
+  - Fast compilation
+  - Built-in optimizations
+  - Module Federation support
+
+- **Biome**
+  - Modern JavaScript/TypeScript toolchain
+  - Linting and formatting
+  - Performance focused
+
+### Frontend Stack
+
+- **React** (v19.1.0)
+
+  - Component-based architecture
+  - Modern React features
+  - Efficient rendering
+
+- **TypeScript**
+  - Type safety
+  - Enhanced developer experience
+  - Better code maintainability
+
+## Architecture
+
+The project uses a micro-frontend architecture with Module Federation:
+
+```mermaid
+graph TD
+    A[Shell App] --> B[Courses App]
+    A --> C[Profile App]
+    B --> D[Shared Dependencies]
+    C --> D
+    D --> E[React]
+    D --> F[React DOM]
 ```
 
-## Run tasks
+## Deployment
 
-To build the library use:
+The project is deployed on Vercel with separate deployments for each application:
 
-```sh
-npx nx build pkg1
+- Shell App: [https://nx-zephyr-module-federation-shell.vercel.app/](https://nx-zephyr-module-federation-shell.vercel.app/)
+- Courses App: Remote module integrated with Shell
+- Profile App: Remote module integrated with Shell
+
+## Getting Started
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/lavesan/nx-zephyr-module-federation-example.git
 ```
 
-To run any task with Nx use:
+2. **Install dependencies**
 
-```sh
-npx nx <target> <project-name>
+```bash
+pnpm install
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+3. **Start development servers**
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
-
-```
-npx nx release
+```bash
+pnpm dev
 ```
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+This will start all applications:
 
-[Learn more about Nx release &raquo;](hhttps://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- Shell: http://localhost:3000
+- Courses: http://localhost:3001
+- Profile: http://localhost:3002
 
-## Keep TypeScript project references up to date
+## Project Structure
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
-
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
-
-```sh
-npx nx sync
+```
+nx-module-federation-with-zephyr/
+├── apps/
+│   ├── shell/          # Host application
+│   ├── courses/        # Remote module for courses
+│   └── profile/        # Remote module for profile
+├── packages/
+│   └── zephyr-rsbuild-plugin/  # Custom build plugin
+└── [configuration files]
 ```
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+## Key Features
 
-```sh
-npx nx sync:check
-```
+- **Dynamic Module Loading**: Remote modules are loaded on demand
+- **Shared Dependencies**: Efficient runtime dependency sharing
+- **Type Safety**: Full TypeScript support across all applications
+- **Modern UI**: Responsive design with modern aesthetics
+- **Build Optimization**: Efficient build process with RSBuild
+- **Development Experience**: Hot Module Replacement (HMR) support
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+## Contributing
 
-## Set up CI!
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Step 1
+## License
 
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+MIT
