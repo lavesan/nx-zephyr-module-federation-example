@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm install && npx nx build shell",
-  "outputDirectory": "apps/shell/dist",
+  "buildCommand": "cd ../.. && pnpm install && npx nx build profile",
+  "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
     {
