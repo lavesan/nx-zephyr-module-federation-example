@@ -1,15 +1,18 @@
 import { dependencies } from "./package.json";
 import type { ModuleFederationConfig } from "@rsbuild/core";
 
-const isDev = process.env.NODE_ENV === "development";
+const { NODE_ENV, VITE_COURSES_URL, VITE_PROFILE_URL } = process.env;
+const isDev = NODE_ENV === "development";
 
 const COURSES_URL = isDev
   ? "http://localhost:3001"
-  : "https://nx-zephyr-module-federation-example-courses.vercel.app";
+  : VITE_COURSES_URL ||
+    "https://nx-zephyr-module-federation-example-courses.vercel.app";
 
 const PROFILE_URL = isDev
   ? "http://localhost:3002"
-  : "https://nx-zephyr-module-federation-example-profile.vercel.app";
+  : VITE_PROFILE_URL ||
+    "https://nx-zephyr-module-federation-example-profile.vercel.app";
 
 export const mfConfig: ModuleFederationConfig["options"] = {
   name: "shell",
