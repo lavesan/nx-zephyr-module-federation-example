@@ -19,11 +19,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    /* paths */
-    "paths": {
-      "courses/App": ["../courses/src/App.tsx"],
-      "profile/App": ["../profile/src/App.tsx"]
-    }
+
+    /* Module Federation types */
+    "types": ["@rsbuild/core/types"]
   },
-  "include": ["src", "../courses/src/App.tsx"]
+  "include": ["src"]
 }
