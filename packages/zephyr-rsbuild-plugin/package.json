@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@rsbuild/plugin-react": "^1.2.0",
+    "@rsbuild/plugin-react": "^0.4.5",
     "@rslib/core": "^0.6.2",
     "@types/react": "^19.1.0",
     "react": "^19.1.0",
@@ -33,7 +33,7 @@
   },
   "private": true,
   "dependencies": {
-    "@rsbuild/shared": "^0.7.10",
+    "@rsbuild/shared": "^0.4.5",
     "zephyr-rspack-plugin": "^0.0.38"
   }
 }

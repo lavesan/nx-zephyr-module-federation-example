@@ -4,7 +4,7 @@ import { withZephyr } from "zephyr-rspack-plugin";
 export const ZephyrRsbuildPlugin = (): RsbuildPlugin => ({
   name: "plugin-zephyr-rsbuild",
   setup(api) {
-    api.onBeforeCreateCompiler(async ({ bundlerConfigs }) => {
+    api.onBeforeCreateCompiler(async ({ bundlerConfigs }: any) => {
       const zeConfig = await withZephyr()(bundlerConfigs[0]);
       bundlerConfigs[0] = zeConfig;
     });
@@ -13,5 +13,5 @@ export const ZephyrRsbuildPlugin = (): RsbuildPlugin => ({
     //   const zeConfig = await withZephyr()(config);
     //   mergeConfig(zeConfig);
     // });
-  }
+  },
 });
